@@ -1,0 +1,32 @@
+*{
+  box-sizing: border-box;
+}
+
+body{
+  font-family: "karla", sans-serif;
+  margin: 0;
+}
+
+nav{
+  display: flex;
+  justify-content: space-between;
+  background-color: aqua;
+  margin: 0;
+  height: 60px;
+  align-items: center;
+  padding: 10px;
+
+}
+
+nav > h2{
+  margin: auto;
+}
+
+nav > p{
+  margin-right: 50px;
+}
+
+nav > img{
+  height: 100%;
+ 
+}
