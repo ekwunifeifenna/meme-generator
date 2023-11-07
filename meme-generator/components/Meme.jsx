@@ -5,8 +5,8 @@ function Meme(){
 
     // const [memeImage, setMemeImage] = useState("http://i.imgflip.com/1bij.jpg")
     const [meme, setMeme] = useState({
-        topText: "",
-        bottomText: "",
+        topText: "Top Text",
+        bottomText: "Bottom Text",
         randomImage: "http://i.imgflip.com/1bij.jpg"
     })
 
@@ -25,7 +25,15 @@ function Meme(){
 
         }))
         
-        
+    }
+
+    function handleChange(event){
+        const {name, value} = event.target
+        setMeme(previosMeme => ({
+            ...previosMeme,
+            [name]: value
+
+        }))
 
     }
 
@@ -37,14 +45,38 @@ function Meme(){
 
                 <div className="form--inputs">
 
-                <input type="text" className="form--text" placeholder="Enter top text"/>
+                <input 
+                    type="text" 
+                    className="form--text" 
+                    placeholder="Enter top text" 
+                    name="topText"
+                    value={meme.topText}
+                    onChange={handleChange}
+                />
  
-                <input type="text"  className="form--text" placeholder="Enter bottom text"/>
+
+                <input 
+                    type="text"  
+                    className="form--text" 
+                    placeholder="Enter bottom text" 
+                    name="bottomText"
+                    value={meme.bottomText}
+                    onChange={handleChange}
+                />
                 </div>
 
-                <button className="form--button" onClick={getMemeImage}>Generate new Image</button>
+                <button 
+                    className="form--button" 
+                    onClick={getMemeImage}
+                    >Generate new Image
+                </button>
 
+
+                <div className="meme">
                 <img src={meme.randomImage} className="meme--image"/>
+                <h2 className="meme--text top">{meme.topText}</h2>
+                <h2 className="meme--text bottom">{meme.bottomText}</h2>
+                </div>
             </form>
 
             
