@@ -1,6 +1,6 @@
 import { useEffect } from "react"
 import React, {useState} from "react"
-import "../src/App"
+import "../src/App.css"
 
 
 function Meme(){
@@ -41,7 +41,7 @@ function Meme(){
 
         setMeme(previousMeme => ({
             ...previousMeme,
-            randomImage: url 
+            randomImage: url
 
         }))
         
@@ -61,7 +61,7 @@ function Meme(){
 
     return(
         <main>
-            <form className="meme--form">
+            <div className="meme--form">
 
                 <div className="form--inputs">
 
@@ -97,7 +97,7 @@ function Meme(){
                 <h2 className="meme--text top">{meme.topText}</h2>
                 <h2 className="meme--text bottom">{meme.bottomText}</h2>
                 </div>
-            </form>
+            </div>
 
             
             
