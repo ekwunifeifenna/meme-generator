@@ -1,23 +1,43 @@
+import { useEffect } from "react"
 import React, {useState} from "react"
-import memesData from "./memesData"
+import "../src/App"
+
 
 function Meme(){
 
-    // const [memeImage, setMemeImage] = useState("http://i.imgflip.com/1bij.jpg")
-    const [meme, setMeme] = useState({
-        topText: "Top Text",
-        bottomText: "Bottom Text",
-        randomImage: "http://i.imgflip.com/1bij.jpg"
+
+       // const [memeImage, setMemeImage] = useState("http://i.imgflip.com/1bij.jpg")
+        const [meme, setMeme] = useState({
+        topText: "",
+        bottomText: "",
+        randomImage: "http://i.imgflip.com/1c1uej.jpg"
     })
 
-    const [allMemeImages, setAllMemeImages] = useState(memesData)
+
+    const [allMemeImages, setAllMemeImages] = useState([])
+
+
+
+
+    //Make an API call to get all the images
+    useEffect(()=>{
+        fetch("https://api.imgflip.com/get_memes")    //fetch the memes
+        .then(res => res.json())  //parse the json
+        .then(data => setAllMemeImages(data.data.memes)) //set the memes to the data received from json after the state changes
+
+        
+    },[])
+    
+
+
+ 
 
 
     // The function to get the random image on the page 
     function getMemeImage(){
-        const memesArray = allMemeImages.data.memes
-        const rand = Math.floor(Math.random()*memesArray.length)
-        const url = memesArray[rand].url
+
+        const rand = Math.floor(Math.random() * allMemeImages.length)
+        const url = allMemeImages[rand].url
 
         setMeme(previousMeme => ({
             ...previousMeme,

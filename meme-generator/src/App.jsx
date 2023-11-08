@@ -4,7 +4,7 @@ import Navbar from '../components/Navbar'
 import Meme from '../components/Meme'
 
 function App() {
-  const [count, setCount] = useState(0)
+  // const [count, setCount] = useState(0)
 
   return (
     <>
